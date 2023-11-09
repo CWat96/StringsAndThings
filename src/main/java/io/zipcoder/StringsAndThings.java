@@ -18,15 +18,15 @@ public class StringsAndThings {
         int count = 0;
 
 // fetch all of the characters in the sentence
-        char[] allCharacters = input.toCharArray();
+        String[] allCharacters = input.split("\\s+");
 
-// evaluate each character indivudually
-        for(char character : allCharacters) {
-            boolean isY = 'y' == character;
-            boolean isZ = 'z' == character;
-            boolean shouldCount = isY || isZ;
-            if(shouldCount) {
-                count++;
+// evaluate each character individually
+        for(String character : allCharacters) {
+            if (!character.isEmpty()) {
+                char lastChar = character.charAt(character.length() - 1);
+                if (lastChar == 'y' || lastChar == 'z') {
+                    count++;
+                }
             }
         }
         return count;
