@@ -15,7 +15,22 @@ public class StringsAndThings {
      *           countYZ("day fyyyz"); // Should return 2
      */
     public Integer countYZ(String input){
-        return null;
+        int count = 0;
+
+// fetch all of the characters in the sentence
+        char[] allCharacters = input.toCharArray();
+
+// evaluate each character indivudually
+        for(char character : allCharacters) {
+            boolean isY = 'y' == character;
+            boolean isZ = 'z' == character;
+            boolean shouldCount = isY || isZ;
+            if(shouldCount) {
+                count++;
+            }
+        }
+        return count;
+
     }
 
     /**
@@ -28,7 +43,13 @@ public class StringsAndThings {
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
     public String removeString(String base, String remove){
-        return null;
+        String result = base.replace(remove, ""); // String is the type I'm pulling from, result is what i expect to return, base is the word i'm removing words from
+        //.replace method searches for a specified value (the test was created with the specified value replaced).
+        //(remove, "") removes those chararcters!
+        return result;
+
+//        char Hello = remove.replace(2) // I originally put char because I thought I was removing characters and thought I needed to declare a word
+//        return base + remove; // I wrote the objects + (adding) because I thought I needed to print out the result
     }
 
     /**
@@ -40,7 +61,11 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
     public Boolean containsEqualNumberOfIsAndNot(String input){
-        return null;
+        int isCount = (input.length() - input.replace("is", "").length())/2;
+        // isCount is counting "is" -- .length returns the length of string -- .replace searches for "is" and returns a new string where "is" are replaced
+        int notCount = (input.length() - input.replace("not", "").length())/3;
+        // notCount is counting "not" -- .length returns the length of string -- .replace searches for "not" and returns a new string where "not" are replaced
+        return isCount == notCount;
     }
 
     /**
